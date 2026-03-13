@@ -1,0 +1,44 @@
+body {
+    margin: 0px auto;
+    background-color:  #E08E1A;
+  
+}
+.conteiner{
+    width: 400px;
+    height: 400px;
+    background-color: #A24C10;
+    margin: auto auto;
+    align-items: center;
+    border-radius: 25px;
+    border: solid 2px white;
+}
+img {
+    width: 400PX;
+}
+.login1 {
+    font-size: xx-large;
+    color: #FFFF00;
+    font-family: "Poppins", sans-serif;
+}
+h1{
+    -webkit-text-stroke: 2px black;
+    margin-bottom: unset;
+    margin-top: unset;
+}
+.login2{
+    width: 250px;
+    height: 75px;
+    background-color: #A24C10;
+    color: white;
+    border-radius: 25px;
+    border: solid 2px white;
+    font-family: "Poppins", sans-serif;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 68px;
+    gap: 10px;
+}
