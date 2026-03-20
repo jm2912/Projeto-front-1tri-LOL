@@ -4,35 +4,41 @@ body {
   
 }
 .conteiner{
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     background-color: #A24C10;
     margin: auto auto;
     align-items: center;
     border-radius: 25px;
     border: solid 2px white;
+    box-shadow: 5px 10px 12px #000000; 
 }
 img {
-    width: 400PX;
+    width: 300PX;
 }
 .login1 {
     font-size: xx-large;
     color: #FFFF00;
     font-family: "Poppins", sans-serif;
 }
-h1{
+.content h1{
     -webkit-text-stroke: 2px black;
     margin-bottom: unset;
     margin-top: unset;
 }
 .login2{
-    width: 250px;
-    height: 75px;
+    width: 200px;
+    height: 65px;
     background-color: #A24C10;
     color: white;
     border-radius: 25px;
     border: solid 2px white;
     font-family: "Poppins", sans-serif;
+    box-shadow: 5px 8px 10px #000000;
+}
+.login2:hover{
+    background-color: #8d430e;
+    cursor: pointer;
 }
 .content{
     display: flex;
@@ -40,5 +46,26 @@ h1{
     justify-content: center;
     align-items: center;
     min-height: 68px;
-    gap: 10px;
+    gap: 15px;
+}
+.login3{
+    background-color: #A24C10;
+    width: 225px;
+    height: 200px;
+    border-radius: 25px;
+    box-shadow: 3px 5px 15px black;
+    padding: 15px;
+    border:solid 2px white;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    min-height: 68px;
+    gap: 20px;
+}
+.email{
+    width: 200px;
+    height: 35px;
+    border-radius: 15px;
+    padding-left: 7px;
 }
