@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="cadastro.css">
+    <script src="./cadastro.js"></script>
 </head>
+
 <body>
-    
+    <div class="content">
+    <div class="conteiner">
+        <img src="../login/lavanderia1.webp" alt="logo">
+    </div>
+    <div class="conteiner">
+        <h1>Cadastro</h1>
+        <form action="/cadastro" method="post">
+            <label for="nome">Nome:</label>
+            <input class="nome" type="text" id="nome" name="nome" placeholder="Digite seu nome"><br><br>
+
+            <label for="email">Email:</label>
+            <input class="email" type="email" id="email" name="email" placeholder="Digite seu email"><br><br>
+
+            <label for="senha">Senha:</label>
+            <input class="senha" type="password" id="senha" name="senha" placeholder="Digite sua senha"><br><br>
+
+            <input class="botão" type="submit" value="Cadastrar">
+        </form>
+
+    </div>
+</div>
 </body>
+
 </html>
