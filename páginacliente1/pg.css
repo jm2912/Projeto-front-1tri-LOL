@@ -1,0 +1,38 @@
+body {
+    margin: 0px auto;
+    background-color:  #E08E1A;
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+}
+
+.options {
+    width: 300px;
+   height: 942px;
+   border: solid 2px rgb(0, 0, 0);
+   background-color: #631E00;
+   color: aliceblue;
+ }
+
+ .freiadinha {
+    color: #DDAD11;
+    border: solid 2px black;
+    background-color: #631E00;
+    height: 300px;
+ }
+
+ .pedidos {
+
+   width: 500px;
+    height: 600px;
+    background-color: #A24C10;
+    margin: auto auto;
+    align-items: center;
+    border-radius: 25px;
+    border: solid 2px white;
+    box-shadow: 5px 10px 12px #000000;
+    padding-left: 15px;
+    padding-right: 5px;
+ padding-top: 5px;
+ padding-bottom: 5px;
+ }
