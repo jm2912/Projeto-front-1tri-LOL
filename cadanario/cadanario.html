@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+<script src="./cadanario.js"></script>
 </head>
 <body>
     <div class="imagem">
@@ -18,11 +19,14 @@
         <div class="cadastro3">
             <div class="cadastro1">
                 <h1>Cadastro</h1>
-            </div>            
-            <input class="cadas" type="text" placeholder="Nome">
-            <input class="cadas" type="text" placeholder="Senha">
-            <input class="cadas" type="text" placeholder="CPF">
-            <button class="cadas2" onclick="cadas()">cadastro</button>
+            </div>
+            <form onsubmit="cadas(); return false">
+            <input class="cadas" type="text" placeholder="Nome" required>
+            <input class="cadas" type="text" placeholder="Senha" required>
+            <input class="cadas" type="text" placeholder="CPF" required>
+            <input class="cadas" type="text" placeholder="CEP" required>
+            <input class="cadas2" type="submit" value="Cadastro">
+        </form>            
         </div>
     </div>
 </body>
