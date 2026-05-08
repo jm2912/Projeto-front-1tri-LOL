@@ -1,31 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Freiadinha - Meus Pedidos</title>
     <link rel="stylesheet" href="pg.css">
-    <script src="./pg.js"></script>
 </head>
-
 <body>
-    <div class="freiadinha">
-        <h1>FREIADINHA</h1>
-    </div>
-    <div class="content">
-        <div class="conteiner">
-            <div class="options">
-                <h1>configurações</h1>
-                <h1>pedidos</h1>
-                <h1>ajuda</h1>
-                <h1>fazer pedidos</h1>
-                <div class="pedidos">
-                    
-                </div>
-                </div>
-            </div>
-        </div>
-</body>
+    <div class="container">
+        
+        <nav class="sidebar">
+            <h1 class="logo">FREIADINHA</h1>
+            <ul class="menu">
+                <li class="active">pedidos</li>
+                <li>fazer pedido</li>
+                <li>configurações</li>
+                <li>ajuda</li>
+            </ul>
+        </nav>
 
+        
+        <main class="content">
+            <header>
+                <h2>MEUS PEDIDOS</h2>
+                <p class="subtitle">VEJA TODOS OS SEUS PEDIDOS AQUI. CLIQUE NO FILTRO ABAIXO PARA FILTRAR STATUS.</p>
+                <div class="filter-box">
+                    <select>
+                        <option value=""></option>
+                    </select>
+                </div>
+            </header>
+
+            <section class="orders-container">
+                <div class="order-list">
+                    
+                    <div class="order-card">
+                        <div class="order-info">
+                            <span class="order-number">PEDIDO <span class="blue-text">#2405</span></span>
+                            <span class="order-date">24/04/2025</span>
+                            <span class="order-service">• Lavagem de Camisa</span>
+                        </div>
+                        <div class="order-value">
+                            <span>R$75,00</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Espaços Vazios (Placeholders) -->
+                    <div class="order-placeholder"></div>
+                    <div class="order-placeholder"></div>
+                    <div class="order-placeholder"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
 </html>
