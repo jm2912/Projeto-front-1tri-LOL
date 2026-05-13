@@ -1,60 +1,164 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freiadinha - Meus Pedidos</title>
-    <link rel="stylesheet" href="pg.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Freiadinha</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="pg.css" />
 </head>
 <body>
-    <div class="container">
-        
-        <nav class="sidebar">
-            <h1 class="logo">FREIADINHA</h1>
-            <ul class="menu">
-                <li class="active">pedidos</li>
-                <li>fazer pedido</li>
-                <li>configurações</li>
-                <li>ajuda</li>
-            </ul>
-        </nav>
 
-        
-        <main class="content">
-            <header>
-                <h2>MEUS PEDIDOS</h2>
-                <p class="subtitle">VEJA TODOS OS SEUS PEDIDOS AQUI. CLIQUE NO FILTRO ABAIXO PARA FILTRAR STATUS.</p>
-                <div class="filter-box">
-                    <select>
-                        <option value=""></option>
-                    </select>
-                </div>
-            </header>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo">FREIADINHA</div>
+  <nav>
+    <button class="nav-item active" onclick="irPara('pedidos')" id="nav-pedidos">📋 Pedidos</button>
+    <button class="nav-item" onclick="irPara('novo')" id="nav-novo">➕ Fazer Pedido</button>
+    <button class="nav-item" onclick="irPara('ajuda')" id="nav-ajuda">❓ Ajuda</button>
+  </nav>
+</aside>
 
-            <section class="orders-container">
-                <div class="order-list">
-                    
-                    <div class="order-card">
-                        <div class="order-info">
-                            <span class="order-number">PEDIDO <span class="blue-text">#2405</span></span>
-                            <span class="order-date">24/04/2025</span>
-                            <span class="order-service">• Lavagem de Camisa</span>
-                        </div>
-                        <div class="order-value">
-                            <span>R$75,00</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill"></div>
-                            </div>
-                        </div>
-                    </div>
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <span class="topbar-title">FREIADINHA</span>
+    <span class="topbar-sub">Sistema de Lavagem</span>
+  </div>
 
-                    <!-- Espaços Vazios (Placeholders) -->
-                    <div class="order-placeholder"></div>
-                    <div class="order-placeholder"></div>
-                    <div class="order-placeholder"></div>
-                </div>
-            </section>
-        </main>
+  <div class="content">
+
+    <!-- PÁGINA: PEDIDOS -->
+    <div class="page active" id="page-pedidos">
+      <div class="page-title">MEUS PEDIDOS</div>
+      <div class="page-sub">VEJA TODOS OS SEUS PEDIDOS. USE O FILTRO ABAIXO PARA FILTRAR POR STATUS.</div>
+
+      <div class="toolbar">
+        <select id="filtro-status" onchange="renderPedidos()">
+          <option value="TODOS">Todos os status</option>
+          <option value="ABERTO">Aberto</option>
+          <option value="EM_ANDAMENTO">Em andamento</option>
+          <option value="CONCLUIDO">Concluído</option>
+          <option value="CANCELADO">Cancelado</option>
+        </select>
+        <button class="btn btn-primary" onclick="irPara('novo')">+ Novo Pedido</button>
+      </div>
+
+      <div id="lista-pedidos"></div>
     </div>
+
+    <!-- PÁGINA: NOVO PEDIDO -->
+    <div class="page" id="page-novo">
+      <div class="row-flex">
+        <button class="btn btn-ghost" onclick="irPara('pedidos')">← Voltar</button>
+        <div class="page-title">FAZER PEDIDO</div>
+      </div>
+      <div class="page-sub">SELECIONE AS PEÇAS E A QUANTIDADE DESEJADA. O VALOR É CALCULADO AUTOMATICAMENTE.</div>
+
+      <div class="form-section">
+        <div class="form-section-title">Peças de Roupa</div>
+        <div class="peca-grid" id="peca-grid"></div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">Resumo do Pedido</div>
+        <div class="resumo-box" id="resumo-box">
+          <p class="empty-msg">Nenhuma peça selecionada ainda.</p>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-ghost" onclick="irPara('pedidos'); limparSelecao()">Cancelar</button>
+        <button class="btn btn-primary" onclick="confirmarPedido()">Confirmar Pedido</button>
+      </div>
+    </div>
+
+    <!-- PÁGINA: DETALHE -->
+    <div class="page" id="page-detalhe">
+      <div class="row-flex">
+        <button class="btn btn-ghost" onclick="irPara('pedidos')">← Voltar</button>
+        <div class="page-title">DETALHES DO PEDIDO</div>
+      </div>
+      <div class="page-sub">INFORMAÇÕES COMPLETAS DO SEU PEDIDO.</div>
+
+      <div class="detalhe-header">
+        <div>
+          <div class="detalhe-id" id="det-id">PEDIDO <span>#---</span></div>
+          <div class="detalhe-data" id="det-data">--/--/----</div>
+        </div>
+        <div class="detalhe-actions">
+          <span class="badge" id="det-badge">---</span>
+          <button class="btn btn-danger" id="det-btn-cancelar" onclick="abrirModalCancelar()" style="display:none">Cancelar Pedido</button>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">Itens do Pedido</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Peça</th>
+              <th>Qtd</th>
+              <th>Preço unit.</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="det-itens"></tbody>
+        </table>
+        <div class="detalhe-total-row">
+          <span class="label-total">TOTAL</span>
+          <span class="valor-total" id="det-total">R$0,00</span>
+        </div>
+      </div>
+
+      <div class="form-section stats-section">
+        <div class="stats-row" id="det-stats"></div>
+      </div>
+    </div>
+
+    <!-- PÁGINA: AJUDA -->
+    <div class="page" id="page-ajuda">
+      <div class="page-title">AJUDA</div>
+      <div class="page-sub">DÚVIDAS SOBRE O SISTEMA DE LAVAGEM.</div>
+      <div class="form-section">
+        <div class="form-section-title">Como usar o sistema</div>
+        <div class="help-item">
+          <div class="help-item-title">📋 Ver pedidos</div>
+          <div class="help-item-desc">Na tela de Pedidos, você visualiza todos os seus pedidos ordenados por data. Use o filtro para encontrar pedidos por status.</div>
+        </div>
+        <div class="help-item">
+          <div class="help-item-title">➕ Fazer pedido</div>
+          <div class="help-item-desc">Clique em "Fazer Pedido", selecione as peças de roupa e a quantidade. O valor é calculado automaticamente. Confirme para registrar.</div>
+        </div>
+        <div class="help-item">
+          <div class="help-item-title">🔍 Ver detalhes</div>
+          <div class="help-item-desc">Clique em qualquer pedido da lista para ver todos os itens, preços e o status detalhado.</div>
+        </div>
+        <div class="help-item">
+          <div class="help-item-title">❌ Cancelar pedido</div>
+          <div class="help-item-desc">Pedidos com status <strong class="destaque">ABERTO</strong> podem ser cancelados. Acesse os detalhes do pedido e clique em "Cancelar Pedido".</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" style="display:none">
+  <div class="modal">
+    <div class="modal-title">Cancelar Pedido?</div>
+    <div class="modal-text" id="modal-text">Tem certeza que deseja cancelar este pedido?</div>
+    <div class="modal-btns">
+      <button class="btn btn-ghost" onclick="fecharModal()">Voltar</button>
+      <button class="btn btn-danger" onclick="executarCancelamento()">Sim, cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="freiadinha.js"></script>
 </body>
 </html>
