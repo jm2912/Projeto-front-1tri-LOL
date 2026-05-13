@@ -1,3 +1,3 @@
 function logar(){
-    window.location.href="../cadastro/cadastro.html"
+    window.location.href="../paginacliente/pg.html"
 }
